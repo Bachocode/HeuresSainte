@@ -11,7 +11,7 @@
 
 <?php
 // Connexion à la base de données
-$dsn = 'mysql:host=localhost;dbname=STL';
+$dsn = 'mysql:host=localhost127.0.0.1:3306;dbname=STL';
 $username = 'root';
 $password = 'Kaka1997@@';
 
@@ -28,10 +28,10 @@ if (isset($_POST['submit'])) {
   $password = $_POST['password'];
 
   // Requête SQL pour récupérer les informations de l'utilisateur
-  $query = "SELECT * FROM users WHERE username = :username";
-  $stmt = $pdo->prepare($query);
-  $stmt->execute(array(':username' => $username));
-  $user = $stmt->fetch(PDO::FETCH_ASSOC);
+  $query = "SELECT * FROM stl.users WHERE username = :username";
+   $stmt = $pdo->prepare($query);
+   $stmt->execute(array(':username' => $username));
+   $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
   // Vérification du mot de passe
   if ($user && password_verify($password, $user['password'])) {
